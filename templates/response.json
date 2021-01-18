@@ -1,0 +1,82 @@
+{
+    "getStarted": {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [
+                    {
+                        "title": "Academic Plan",
+                        "subtitle": "For 2020",
+                        "image_url": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Yangon_Technological_University.JPG",
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "Show Academic plan",
+                                "payload": "show academic plan"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Upcoming Events",
+                        "subtitle": "For 2020",
+                        "image_url": "http://ytu.edu.mm/wp-content/uploads/2019/08/leaf.jpg",
+                        "buttons": [
+                            {
+                                "type": "postback",
+                                "title": "Show upcoming events",
+                                "payload": "show upcoming events"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "chooseYear": {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "button",
+                "text": "Choose a year.",
+                "buttons": [
+                    {
+                        "type": "postback",
+                        "title": "Year 1",
+                        "payload": "1"
+                    },
+                    {
+                        "type": "postback",
+                        "title": "Year 2",
+                        "payload": "2"
+                    }
+                ]
+            }
+        }
+    },
+    "postExamTable": {
+        "attachment": {
+            "type": "file",
+            "payload": {
+                "url": "https://subot.s3.amazonaws.com/exam/DSP+Project.pdf"
+            }
+        }
+    },
+    "showWebView": {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "button",
+                "text": "Try the URL button!",
+                "buttons": [
+                    {
+                        "type": "web_url",
+                        "url": "https://ytusu-bot.herokuapp.com/page",
+                        "title": "URL Button",
+                        "webview_height_ratio": "full"
+                    }
+                ]
+            }
+        }
+    }
+}

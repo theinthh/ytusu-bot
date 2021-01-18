@@ -1,0 +1,44 @@
+{
+    "info": {
+        "class": {
+            "1": {
+                "civil": {
+                    "attachment_id": "706813193449060"
+                },
+                "mech": {
+                    "attachment_id": ""
+                },
+                "mce": {
+                    "attachment_id": ""
+                },
+                "ec": {
+                    "attachment_id": ""
+                },
+                "ep": {
+                    "attachment_id": ""
+                }
+            },
+            "2": {}
+        },
+        "exam": {
+            "1": {
+                "civil": {
+                    "attachment_id": "706813193449060"
+                },
+                "mech": {
+                    "attachment_id": ""
+                },
+                "mce": {
+                    "attachment_id": ""
+                },
+                "ec": {
+                    "attachment_id": ""
+                },
+                "ep": {
+                    "attachment_id": ""
+                }
+            },
+            "2": {}
+        }
+    }
+}

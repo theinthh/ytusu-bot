@@ -1,0 +1,122 @@
+<html>
+
+<head>
+    <title>My Awesome Webview</title>
+
+    <meta name="referrer" content="always">
+    <style>
+        input[type=submit] {
+            width: 100%;
+            background-color: rgb(204, 228, 243);
+            color: rgb(0, 0, 0);
+            padding: 50px 100px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        label {
+            font-size: 20px;
+        }
+
+        input[type=submit]:hover {
+            background-color: #80c7f0;
+        }
+
+        select {
+            font-size: 20px;
+            width: 100%;
+            padding: 50px 100px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid rgb(248, 195, 133);
+            border-radius: 4px;
+            box-sizing: border-box;
+            background-color: rgb(255, 233, 109);
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.com/en_US/messenger.Extensions.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'Messenger'));
+
+        window.extAsyncInit = () => {
+            console.log(window.name)
+            // TODO: How to parse env file from here?
+            MessengerExtensions.getSupportedFeatures(function success(result) {
+                let features = result.supported_features;
+                if (features.includes("context")) {
+                    MessengerExtensions.getContext('2619177775023737',
+                        function success(thread_context) {
+                            // success
+                            document.getElementById("psid").value = thread_context.psid;
+                        },
+                        function error(err) {
+                            // error
+                            console.log(err);
+                        }
+                    );
+                }
+            }, function error(err) {
+                // error retrieving supported features
+                console.log(err);
+            });
+            document.getElementById('submitButton').addEventListener('click', () => {
+                MessengerExtensions.requestCloseBrowser(function success() {
+                    console.log("Webview closing");
+                }, function error(err) {
+                    console.log(err);
+                });
+            });
+        };
+
+    </script>
+    <div>
+        <form action="/pagepostback" method="get">
+            <input type="hidden" name="psid" id="psid">
+            <label for="year">Which year-entrance marks do you want to know ?</label>
+            <select name="year" id="year">
+                <option value="6">2016-2017</option>
+                <option value="7">2017-2018</option>
+                <option value="8">2018-2019</option>
+                <!-- <option value="4">Year 4</option>
+                <option value="5">Year 5</option>
+                <option value="6">Year 6</option> -->
+            </select>
+            <!-- </br>
+            </br> -->
+            <!-- <label for="major">Select your major</label>
+            <select name="major" id="major">
+                <option value="1">Civil</option>
+                <option value="2">Mech</option>
+                <option value="3">McE</option>
+               
+            </select>
+            </br>
+            </br>
+            <label for="timetable">Select for a timetable</label>
+            <select name="timetable" id="timetable">
+                <option value="exam">Examination</option>
+                <option value="class">Classroom</option>
+            </select> -->
+            </br>
+            </br>
+            <hr>
+            <input type="submit" value="Submit" id="submitButton">
+        </form>
+    </div>
+</body>
+
+</html>
