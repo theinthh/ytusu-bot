@@ -54,11 +54,11 @@
 
         window.extAsyncInit = () => {
             console.log(window.name)
-            // TODO: How to parse env file from here?
+
             MessengerExtensions.getSupportedFeatures(function success(result) {
                 let features = result.supported_features;
-                // if (features.includes("context")) {
-                    MessengerExtensions.getContext('2619177775023737',
+                if (features.includes("context")) {
+                    MessengerExtensions.getContext("2619177775023737", 
                         function success(thread_context) {
                             // success
                             console.log(thread_context.psid);
@@ -69,7 +69,7 @@
                             console.log(err);
                         }
                     );
-                // }
+                }
             }, function error(err) {
                 // error retrieving supported features
                 console.log(err);
