@@ -32,6 +32,7 @@ app.get("/page", (req, res, next) => {
 });
 // Handle postback from webview
 app.get("/pagepostback", (req, res) => {
+  console.log(req.query);
   let body = req.query;
   let { year } = body;
   let response = {

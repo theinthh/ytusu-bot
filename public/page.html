@@ -48,7 +48,7 @@
             }
             js = d.createElement(s);
             js.id = id;
-            js.src = "//connect.facebook.com/en_US/messenger.Extensions.js";
+            js.src = "https://connect.facebook.net/en_US/messenger.Extensions.js";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'Messenger'));
 
@@ -62,7 +62,7 @@
                         function success(thread_context) {
                             // success
                             console.log(thread_context.psid);
-                            document.getElementById("psid").value = thread_context.psid;
+                            // document.getElementById("psid").value = thread_context.psid;
                         },
                         function error(err) {
                             // error
@@ -73,6 +73,14 @@
             }, function error(err) {
                 // error retrieving supported features
                 console.log(err);
+            });
+            MessengerExtensions.getUserID(function success(user_ids) {
+                // User ID was successfully obtained. 
+                let psid = user_ids.psid;
+                document.getElementById("psid").value = psid;
+
+            }, function error(err, errorMessage) {
+                // Error handling code
             });
             document.getElementById('submitButton').addEventListener('click', () => {
                 MessengerExtensions.requestCloseBrowser(function success() {
