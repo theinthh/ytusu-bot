@@ -53,12 +53,12 @@
         }(document, 'script', 'Messenger'));
 
         window.extAsyncInit = () => {
-            console.log(window.name)
+            console.log(window.name);
 
-            MessengerExtensions.getSupportedFeatures(function success(result) {
-                let features = result.supported_features;
-                console.log('features : ' + features)
-                if (features.includes("context")) {
+            // MessengerExtensions.getSupportedFeatures(function success(result) {
+            //     let features = result.supported_features;
+            //     console.log('features : ' + features)
+            //     if (features.includes("context")) {
                     MessengerExtensions.getContext("2619177775023737", 
                         function success(thread_context) {
                             // success
@@ -70,11 +70,11 @@
                             console.log(err);
                         }
                     );
-                }
-            }, function error(err) {
-                // error retrieving supported features
-                console.log(err);
-            });
+                // }
+            // }, function error(err) {
+            //     // error retrieving supported features
+            //     console.log(err);
+            // });
             // MessengerExtensions.getUserID(function success(user_ids) {
             //     // User ID was successfully obtained. 
             //     let psid = user_ids.psid;
