@@ -57,11 +57,12 @@
 
             MessengerExtensions.getSupportedFeatures(function success(result) {
                 let features = result.supported_features;
+                console.log('features : ' + features)
                 if (features.includes("context")) {
                     MessengerExtensions.getContext("2619177775023737", 
                         function success(thread_context) {
                             // success
-                            console.log(thread_context.psid);
+                            console.log("tc : " + thread_context);
                             document.getElementById("psid").value = thread_context.psid;
                         },
                         function error(err) {
